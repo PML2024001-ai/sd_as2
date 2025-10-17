@@ -1,16 +1,43 @@
-name: Test Workflow
+name: Automated Documentation Quality Check
 
 on:
   push:
     paths:
-      - '**/*.md'
+      - '**.md'
+  pull_request:
+    paths:
+      - '**.md'
 
 jobs:
-  test:
+  documentation-quality:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Say hello
-        run: echo "GitHub Actions triggered successfully!"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install codespell
+        run: |
+          pip install codespell
+
+      - name: Run codespell (Check spelling)
+        run: |
+          codespell user_guide.md
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install markdownlint
+        run: |
+          npm install -g markdownlint-cli
+
+      - name: Run markdownlint (Check Markdown style)
+        run: |
+          markdownlint user_guide.md
