@@ -1,27 +1,26 @@
 # User Guide
 
-Welcome to the Habbit Tracker Applcation. This guide help users to get start with tracking ther daily routines effectivly.
+Welcome to the Habit Tracker Application. This guide helps users get started with tracking their daily routines effectively.
 
 ## Getting Started
 
-To begin, creat an account using your emale and password. After login, you will be redircted to your dashbord.
+To begin, create an account using your email and password. After logging in, you will be redirected to your dashboard.
 
-## Adding a Habbit
+## Adding a Habit
 
-Click on **Add Habbit**. Enter the habbit name, descreption and choose how often you want to track it.
+Click on **Add Habit**. Enter the habit name, description, and choose how often you want to track it.
 
-Examlpe:
+Example:
 - Name: Drink Water
 - Frequency: Daily
-- Priority: Hight
+- Priority: High
 
 ## Tracking
 
-Check off habbits as you do them. This keeps your streak and shows your progres.
+Check off habits as you complete them. This maintains your streak and shows your progress.
 
 ## Common Issues
 
-- Cant login? Make sure your emale is correct.
-- Not getting remidners? Enable notifcations in settings.
-
+- Can’t log in? Make sure your email is correct.
+- Not getting reminders? Enable notifications in settings.
 
