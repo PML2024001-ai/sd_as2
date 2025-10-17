@@ -1,0 +1,50 @@
+name: Documentation Quality Check
+
+on:
+  push:
+    paths:
+      - '**.md'
+  pull_request:
+    paths:
+      - '**.md'
+
+jobs:
+  lint-docs:
+    name: Run Documentation Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python (for codespell and proselint)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Linters
+        run: |
+          pip install codespell proselint
+          npm install -g markdownlint-cli
+          curl -fsSL https://github.com/errata-ai/vale/releases/latest/download/vale_Linux_64-bit.tar.gz | tar -xz && sudo mv vale /usr/local/bin/
+
+      - name: Run codespell
+        run: codespell .
+
+      - name: Run proselint
+        run: |
+          for file in $(find . -name "*.md"); do
+            proselint "$file"
+          done
+
+      - name: Run markdownlint
+        run: markdownlint '**/*.md'
+
+      - name: Run Vale (if configured)
+        run: |
+          if [ -f ".vale.ini" ]; then
+            vale sync
+            vale '**/*.md'
+          else
+            echo "Skipping Vale – no .vale.ini config found."
+          fi
