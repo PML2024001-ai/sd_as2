@@ -24,6 +24,4 @@ Check off habbits as you do them. This keeps your streak and shows your progres.
 - Cant login? Make sure your emale is correct.
 - Not getting remidners? Enable notifcations in settings.
 
----
 
-Thank you for using our habbit tracker!
